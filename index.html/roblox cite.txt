@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Script for Roblox</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #12151e;
+      color: #ffffff;
+    }
+    header {
+      background-color: #191d2b;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #2b3248;
+    }
+    h1 {
+      margin: 0 0 15px 0;
+      color: #6366f1;
+    }
+    #search {
+      width: 90%;
+      max-width: 400px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #2b3248;
+      background-color: #12151e;
+      color: #fff;
+      font-size: 16px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #191d2b;
+      border: 1px solid #2b3248;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h3 {
+      margin: 0 0 8px 0;
+      color: #e2e8f0;
+    }
+    .game-tag {
+      display: inline-block;
+      background-color: #262c40;
+      color: #818cf8;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .desc {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #6366f1;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    button:hover {
+      background-color: #4f46e5;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Script for Roblox</h1>
+  <input type="text" id="search" placeholder="Поиск по названию игры или скрипта..." onkeyup="filterScripts()">
+</header>
+
+<div class="container" id="cards">
+  <div class="card">
+    <div>
+      <span class="game-tag">Murder Mystery 2</span>
+      <h3>MM2 Auto Farm & ESP</h3>
+      <p class="desc">Подсветка ролей (убийца, шериф), автосбор монет и быстрый бег.</p>
+    </div>
+    <button onclick="copyCode(this, 'loadstring(game:HttpGet(&quot;https://example.com;))()')">Скопировать скрипт</button>
+  </div>
+
+  <div class="card">
+    <div>
+      <span class="game-tag">Universal</span>
+      <h3>Infinite Yield Admin</h3>
+      <p class="desc">Универсальная админ-панель с полетом, ноклипом и телепортами для любых режимов.</p>
+    </div>
+    <button onclick="copyCode(this, 'loadstring(game:HttpGet(&quot;https://githubusercontent.com;))()')">Скопировать скрипт</button>
+  </div>
+
+  <div class="card">
+    <div>
+      <span class="game-tag">Brookhaven RP</span>
+      <h3>Brookhaven Hub</h3>
+      <p class="desc">Доступ к закрытым предметам, управление машинами и визуальные эффекты.</p>
+    </div>
+    <button onclick="copyCode(this, 'loadstring(game:HttpGet(&quot;https://example.com;))()')">Скопировать скрипт</button>
+  </div>
+</div>
+
+<script>
+  function copyCode(btn, code) {
+    navigator.clipboard.writeText(code);
+    const oldText = btn.innerText;
+    btn.innerText = 'Скопировано!';
+    btn.style.backgroundColor = '#10b981';
+    setTimeout(() => {
+      btn.innerText = oldText;
+      btn.style.backgroundColor = '#6366f1';
+    }, 1500);
+  }
+
+  function filterScripts() {
+    const query = document.getElementById('search').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(query) ? 'flex' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
